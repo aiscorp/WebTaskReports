@@ -1,0 +1,16 @@
+﻿
+@using WebTaskReports.Models
+@model IEnumerable<Job>
+
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+<h1>Список задач:</h1>
+
+<table class="table">
+    @foreach (Job i in Model)
+    {
+        <tr><td>@i.Id</td><td>@i.Name</td><td><a asp-action="Job" asp-route-id="@i.Id">Description...</a></td></tr>
+    }
+</table>

@@ -1,0 +1,18 @@
+﻿
+@using WebTaskReports.Models
+@model Job
+
+@{
+    ViewData["Title"] = "Job";
+}
+
+<h1>@ViewData["Job"]</h1>
+
+<article>
+    <header><b>@Model.Id</b> - @Model.Name</header>
+    <p>@Model.Description</p>
+    <a asp-action="Jobs">Back to list</a>
+</article>
+
+
+
