@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -35,8 +35,12 @@
     <Folder Include="Views\Report\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="Data\" />
-    <Folder Include="wwwroot\lib\" />
     <Folder Include="Components\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebTaskReports.DAL\WebTaskReports.DAL.csproj" />
+    <ProjectReference Include="..\WebTaskReports.Domain\WebTaskReports.Domain.csproj" />
   </ItemGroup>
 
 </Project>

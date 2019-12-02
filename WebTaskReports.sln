@@ -4,10 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTaskReports", "WebTaskReports\WebTaskReports.csproj", "{658992A0-DBFE-404F-BD30-43A65EEDACE6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{14803443-5051-4EB4-8B3D-3AD8F12F868F} = {14803443-5051-4EB4-8B3D-3AD8F12F868F}
+		{8C1FEA4E-F35F-46E7-B558-14D645DC4BED} = {8C1FEA4E-F35F-46E7-B558-14D645DC4BED}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTestApp", "WebTestApp\WebTestApp.csproj", "{3E02FEC7-768F-4D7C-BFBD-DB2CB63B7854}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTaskReports.DAL", "WebTaskReports.DAL\WebTaskReports.DAL.csproj", "{8C1FEA4E-F35F-46E7-B558-14D645DC4BED}"
+	ProjectSection(ProjectDependencies) = postProject
+		{14803443-5051-4EB4-8B3D-3AD8F12F868F} = {14803443-5051-4EB4-8B3D-3AD8F12F868F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTaskReports.Domain", "WebTaskReports.Domain\WebTaskReports.Domain.csproj", "{14803443-5051-4EB4-8B3D-3AD8F12F868F}"
 EndProject
