@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site1.css",
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true,
+      "gzip": true
+    },
+    "sourceMap": true
+  }
+]

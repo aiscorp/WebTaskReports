@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTaskReports", "WebTaskReports\WebTaskReports.csproj", "{658992A0-DBFE-404F-BD30-43A65EEDACE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTestApp", "WebTestApp\WebTestApp.csproj", "{3E02FEC7-768F-4D7C-BFBD-DB2CB63B7854}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTestApp", "WebTestApp\WebTestApp.csproj", "{3E02FEC7-768F-4D7C-BFBD-DB2CB63B7854}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTaskReports.DAL", "WebTaskReports.DAL\WebTaskReports.DAL.csproj", "{8C1FEA4E-F35F-46E7-B558-14D645DC4BED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTaskReports.Domain", "WebTaskReports.Domain\WebTaskReports.Domain.csproj", "{14803443-5051-4EB4-8B3D-3AD8F12F868F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{3E02FEC7-768F-4D7C-BFBD-DB2CB63B7854}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E02FEC7-768F-4D7C-BFBD-DB2CB63B7854}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E02FEC7-768F-4D7C-BFBD-DB2CB63B7854}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C1FEA4E-F35F-46E7-B558-14D645DC4BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C1FEA4E-F35F-46E7-B558-14D645DC4BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C1FEA4E-F35F-46E7-B558-14D645DC4BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1FEA4E-F35F-46E7-B558-14D645DC4BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14803443-5051-4EB4-8B3D-3AD8F12F868F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14803443-5051-4EB4-8B3D-3AD8F12F868F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14803443-5051-4EB4-8B3D-3AD8F12F868F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14803443-5051-4EB4-8B3D-3AD8F12F868F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
