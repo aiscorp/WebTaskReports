@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+п»їusing Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -22,20 +22,20 @@ namespace WebTaskReports
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Net core 3.0 не требует указания services.AddMvc(), 
-            // взамен указывается типы контроллеров и Razor
+            // Net core 3.0 РЅРµ С‚СЂРµР±СѓРµС‚ СѓРєР°Р·Р°РЅРёСЏ services.AddMvc(), 
+            // РІР·Р°РјРµРЅ СѓРєР°Р·С‹РІР°РµС‚СЃСЏ С‚РёРїС‹ РєРѕРЅС‚СЂРѕР»Р»РµСЂРѕРІ Рё Razor
             // https://docs.microsoft.com/ru-ru/aspnet/core/migration/22-to-30?view=aspnetcore-2.2&tabs=visual-studio
             //
             services.AddControllersWithViews();
 
             services.AddRazorPages();
 
-            // Полезно или нет?
-            // Включение компиляции во время выполнения в проекте ASP.NET Core 3,0
-            // Пакет Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
+            // РџРѕР»РµР·РЅРѕ РёР»Рё РЅРµС‚?
+            // Р’РєР»СЋС‡РµРЅРёРµ РєРѕРјРїРёР»СЏС†РёРё РІРѕ РІСЂРµРјСЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РІ РїСЂРѕРµРєС‚Рµ ASP.NET Core 3,0
+            // РџР°РєРµС‚ Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
             // services.AddControllersWithViews().AddRazorRuntimeCompilation();    
 
-            // Контекст базы данных
+            // РљРѕРЅС‚РµРєСЃС‚ Р±Р°Р·С‹ РґР°РЅРЅС‹С…
             //        services.AddDbContext<ApplicationDbContext>(options =>
             //options.UseSqlServer(
             //    Configuration.GetConnectionString("DefaultConnection")));
@@ -51,15 +51,15 @@ namespace WebTaskReports
             {
                 app.UseDeveloperExceptionPage();
 
-                // Ошибки базы данных
+                // РћС€РёР±РєРё Р±Р°Р·С‹ РґР°РЅРЅС‹С…
                 // app.UseDatabaseErrorPage();
 
-                // Автоматизация миграций
+                // РђРІС‚РѕРјР°С‚РёР·Р°С†РёСЏ РјРёРіСЂР°С†РёР№
                 // ???
             }
             else
             {
-                // Для стадии Production
+                // Р”Р»СЏ СЃС‚Р°РґРёРё Production
                 app.UseExceptionHandler("/Home/Error");
 
                 // HTTP Strict Transport Security Protocol (HSTS)
@@ -68,8 +68,8 @@ namespace WebTaskReports
                 // app.UseHsts();
             }
 
-            // Если есть SSL для Https - включить
-            // Бесплатные сертификаты
+            // Р•СЃР»Рё РµСЃС‚СЊ SSL РґР»СЏ Https - РІРєР»СЋС‡РёС‚СЊ
+            // Р‘РµСЃРїР»Р°С‚РЅС‹Рµ СЃРµСЂС‚РёС„РёРєР°С‚С‹
             // https://letsencrypt.org/ru/
             // app.UseHttpsRedirection();
 
@@ -78,7 +78,7 @@ namespace WebTaskReports
 
             app.UseRouting();
 
-            // Будет добавлено позднее
+            // Р‘СѓРґРµС‚ РґРѕР±Р°РІР»РµРЅРѕ РїРѕР·РґРЅРµРµ
             //app.UseAuthentication();
             //app.UseAuthorization();
 
