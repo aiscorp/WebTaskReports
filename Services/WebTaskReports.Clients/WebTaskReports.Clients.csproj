@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\WebTaskReports.Domain\WebTaskReports.Domain.csproj" />
+    <ProjectReference Include="..\WebTaskReports.Interfaces\WebTaskReports.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
