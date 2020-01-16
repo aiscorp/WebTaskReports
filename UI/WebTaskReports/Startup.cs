@@ -36,19 +36,16 @@ namespace WebTaskReports
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
-            
+
             // зачем? почитать
             //services.AddTransient<WebStoreContextInitializer>();
 
             // Службы юзеров и ролей
             services.AddIdentity<User, Role>()
-                .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<AppDbContext>();
+              //.AddDefaultTokenProviders();
 
-            // из примера ms docs
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<AppDbContext>()
-            //    .AddRoles<IdentityRole>(); ;
+
                         
             services.Configure<IdentityOptions>(
                 opt =>
