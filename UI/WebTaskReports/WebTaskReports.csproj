@@ -46,6 +46,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Identity\Pages\Account\Login.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Register.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\_StatusMessage.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\_ViewImports.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Common\WebTaskReports.Domain\WebTaskReports.Domain.csproj" />
     <ProjectReference Include="..\..\Services\WebTaskReports.DAL\WebTaskReports.DAL.csproj" />
     <ProjectReference Include="..\..\Services\WebTaskReports.Interfaces\WebTaskReports.Interfaces.csproj" />
