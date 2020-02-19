@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System;
 using System.IO;
 using WebTaskReports.DAL.Context;
@@ -32,15 +33,16 @@ namespace WebTaskReports
             // Пакет Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
             // services.AddControllersWithViews().AddRazorRuntimeCompilation();    
 
-            // Контекст базы данных
+            #region Контекст базы данных
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
 
             // зачем? почитать
             //services.AddTransient<WebStoreContextInitializer>();
+            #endregion
 
-            // Службы юзеров и ролей
+            #region Служба Identity <юзеры и роли>
             services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultUI()
@@ -63,8 +65,9 @@ namespace WebTaskReports
                     //opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABC123";
                     opt.User.RequireUniqueEmail = false; // Грабли - на этапе отладки при попытке регистрации двух пользователей без email
                 });
+            #endregion
 
-            // для куки
+            #region Куки (не активно и не настроено)
             // https://docs.microsoft.com/ru-ru/ASPNET/Core/fundamentals/app-state?view=aspnetcore-3.1
             //services.ConfigureApplicationCookie(opt =>
             //{
@@ -79,15 +82,38 @@ namespace WebTaskReports
             //    opt.SlidingExpiration = true;
             //});
             //services.AddSession();
+            #endregion
 
+            #region Внешняя авторизация через Google
+            services.AddAuthentication()
+                .AddOpenIdConnect("Google", "Google",
+                    o =>
+                    {
+                        IConfigurationSection googleAuthNSection =
+                            Configuration.GetSection("Authentication:Google");
+                        o.ClientId = "1045950316770-rm034ka9i6cs25fiursdhomnfg6kcinl.apps.googleusercontent.com";
+                        o.ClientSecret = "htNHxae7ewLoTH9-SwpPgpfs";
+                        o.Authority = "https://accounts.google.com";
+                        o.ResponseType = OpenIdConnectResponseType.Code;
+                        o.CallbackPath = "/signin-google";
+                    });
+            // .AddIdentityServerJwt();
 
+            //Внешняя авторизация
+            // https://habr.com/ru/post/461433/
+            // https://developers.google.com/identity/sign-in/web/sign-in#before_you_begin
+            //https://localhost:5001/
+            //{ "web":{ 
+            //  "client_id":"1045950316770-rm034ka9i6cs25fiursdhomnfg6kcinl.apps.googleusercontent.com","project_id":"webtaskreports-1582143905079",
+            //  "auth_uri":"https://accounts.google.com/o/oauth2/auth",
+            //  "token_uri":"https://oauth2.googleapis.com/token",
+            //  "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+            //  "client_secret":"htNHxae7ewLoTH9-SwpPgpfs",
+            //  "redirect_uris":["https://localhost:5001/signin-google"]
+            //    }}
+            #endregion
 
-            // Net core 3.0 не требует указания services.AddMvc(), 
-            // взамен указывается типы контроллеров и Razor
-            // https://docs.microsoft.com/ru-ru/aspnet/core/migration/22-to-30?view=aspnetcore-2.2&tabs=visual-studio
-            //
             services.AddControllersWithViews();
-
             services.AddRazorPages();
         }
 
