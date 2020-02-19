@@ -30,6 +30,9 @@ namespace WebTaskReports.DAL.Context
 
         protected override void OnModelCreating(ModelBuilder model)
         {
+            if (model == null)
+                return;
+                        
             model.Entity<Category>().HasData(
                 new Category[]
                 {
@@ -45,6 +48,8 @@ namespace WebTaskReports.DAL.Context
                     new Project { Id=2, Name="Project 2", Description="Описание подробнее", Color="00ffbbff", UserId=1},
                     new Project { Id=3, Name="Project 3", Description="Описание подробнее", Color="00ffbbff", UserId=1}
                 });
+
+            base.OnModelCreating(model);
 
         }
 

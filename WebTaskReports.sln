@@ -27,11 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTaskReports", "UI\WebTas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTaskReports.ServiceHosting", "Services\WebTaskReports.ServiceHosting\WebTaskReports.ServiceHosting.csproj", "{9AE2E617-5BD9-499F-B465-08D5DFDB7234}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTaskReports.Interfaces", "Services\WebTaskReports.Interfaces\WebTaskReports.Interfaces.csproj", "{7639E833-0380-4BD9-B568-38603BC779DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTaskReports.Interfaces", "Services\WebTaskReports.Interfaces\WebTaskReports.Interfaces.csproj", "{7639E833-0380-4BD9-B568-38603BC779DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTaskReports.Clients", "Services\WebTaskReports.Clients\WebTaskReports.Clients.csproj", "{AE89B53A-48B4-4458-BDD1-EEB22FBF54E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTaskReports.Clients", "Services\WebTaskReports.Clients\WebTaskReports.Clients.csproj", "{AE89B53A-48B4-4458-BDD1-EEB22FBF54E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTaskReports.Services", "Services\WebTaskReports.Services\WebTaskReports.Services.csproj", "{4B0A7614-50A5-4A8A-ADDF-49ABD91EB0BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTaskReports.Services", "Services\WebTaskReports.Services\WebTaskReports.Services.csproj", "{4B0A7614-50A5-4A8A-ADDF-49ABD91EB0BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTestApp", "Other\BlazorTestApp\BlazorTestApp.csproj", "{481B8083-19F6-4387-B53A-79F3ED5A1094}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{4B0A7614-50A5-4A8A-ADDF-49ABD91EB0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B0A7614-50A5-4A8A-ADDF-49ABD91EB0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B0A7614-50A5-4A8A-ADDF-49ABD91EB0BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{481B8083-19F6-4387-B53A-79F3ED5A1094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{481B8083-19F6-4387-B53A-79F3ED5A1094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{481B8083-19F6-4387-B53A-79F3ED5A1094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{481B8083-19F6-4387-B53A-79F3ED5A1094}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{7639E833-0380-4BD9-B568-38603BC779DA} = {7239E506-B12C-4A2D-857B-AD2486B5B461}
 		{AE89B53A-48B4-4458-BDD1-EEB22FBF54E4} = {7239E506-B12C-4A2D-857B-AD2486B5B461}
 		{4B0A7614-50A5-4A8A-ADDF-49ABD91EB0BA} = {7239E506-B12C-4A2D-857B-AD2486B5B461}
+		{481B8083-19F6-4387-B53A-79F3ED5A1094} = {6CE99487-E739-48A0-A428-D8822B56DF89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C94306F7-7A82-4012-BA46-2BE625DB219F}

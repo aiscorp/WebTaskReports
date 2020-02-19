@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Identity\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using WebTaskReports.Models;
 
 namespace WebTaskReports.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly IConfiguration _Configuration;
@@ -36,6 +38,7 @@ namespace WebTaskReports.Controllers
             return View();
         }
 
+        
         public IActionResult Jobs()
         {
             return View(_Jobs);
@@ -44,7 +47,7 @@ namespace WebTaskReports.Controllers
         public IActionResult Job(int id)
         {
 
-            ViewData["Job"] = "Job: " + _Jobs[id].Id;
+            ViewData["Job"] = "Job:  " + _Jobs[id].Id;
 
             return View(_Jobs[id]);
         }

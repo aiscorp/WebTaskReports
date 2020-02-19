@@ -42,11 +42,10 @@ namespace WebTaskReports
 
             // Службы юзеров и ролей
             services.AddIdentity<User, Role>()
-                .AddEntityFrameworkStores<AppDbContext>();
-              //.AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
 
-
-                        
             services.Configure<IdentityOptions>(
                 opt =>
                 {
@@ -82,6 +81,7 @@ namespace WebTaskReports
             //services.AddSession();
 
 
+
             // Net core 3.0 не требует указания services.AddMvc(), 
             // взамен указывается типы контроллеров и Razor
             // https://docs.microsoft.com/ru-ru/aspnet/core/migration/22-to-30?view=aspnetcore-2.2&tabs=visual-studio
@@ -96,12 +96,8 @@ namespace WebTaskReports
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                // Ошибки базы данных
-                // app.UseDatabaseErrorPage();
-
+                app.UseDatabaseErrorPage();
                 // Автоматизация миграций
-                // ???
             }
             else
             {
@@ -127,11 +123,8 @@ namespace WebTaskReports
 
             app.UseRouting();
 
-            
             app.UseAuthentication();
             app.UseAuthorization();
-
-
 
             app.UseEndpoints(endpoints =>
             {

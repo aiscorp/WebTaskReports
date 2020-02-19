@@ -34,15 +34,15 @@ namespace WebTaskReports.Domain.Entities.Identity
             string password = "Password";
 
 
-            if (await roleManager.FindByNameAsync("admin") == null)
+            if (await roleManager.FindByNameAsync(adminEmail) == null)
                 await roleManager.CreateAsync(new Role("admin"));
 
-            if (await roleManager.FindByNameAsync("user") == null)
+            if (await roleManager.FindByNameAsync(userEmail) == null)
                 await roleManager.CreateAsync(new Role("user"));
 
             if (await userManager.FindByNameAsync(adminEmail) == null)
             {
-                User admin = new User { UserName = "admin", Name = "Petr", Surname = "Petrov", DOB = DateTime.Parse("1994-10-31T20:59Z").ToUniversalTime(), LastAuthorized = DateTime.Parse("2020-01-01T00:00Z").ToUniversalTime(), Email = adminEmail };
+                User admin = new User { UserName = adminEmail, Name = "Petr", Surname = "Petrov", DOB = DateTime.Parse("1994-10-31T20:59Z").ToUniversalTime(), LastAuthorized = DateTime.Parse("2020-01-01T00:00Z").ToUniversalTime(), Email = adminEmail };
                 
                 IdentityResult result = await userManager.CreateAsync(admin, password);
                 if (result.Succeeded)
@@ -53,7 +53,7 @@ namespace WebTaskReports.Domain.Entities.Identity
 
             if (await userManager.FindByNameAsync(userEmail) == null)
             {
-                User user = new User { UserName = "user", Name = "Ivan", Surname = "Ivanov", DOB = DateTime.Parse("1990-10-31T20:59Z").ToUniversalTime(), LastAuthorized = DateTime.Parse("2019-10-01T00:00Z").ToUniversalTime(), Email = userEmail };
+                User user = new User { UserName = userEmail, Name = "Ivan", Surname = "Ivanov", DOB = DateTime.Parse("1990-10-31T20:59Z").ToUniversalTime(), LastAuthorized = DateTime.Parse("2019-10-01T00:00Z").ToUniversalTime(), Email = userEmail };
 
 
                 IdentityResult result = await userManager.CreateAsync(user, password);
