@@ -12,6 +12,9 @@ using System;
 using System.IO;
 using WebTaskReports.DAL.Context;
 using WebTaskReports.Domain.Entities.Identity;
+using WebTaskReports.Interfaces.Services;
+using WebTaskReports.Services.Product.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace WebTaskReports
 {
@@ -45,8 +48,8 @@ namespace WebTaskReports
             #region Служба Identity <юзеры и роли>
             services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultUI()
-                .AddDefaultTokenProviders();
+            //.AddDefaultUI()
+            .AddDefaultTokenProviders(); //enable two-factor authentication
 
             services.Configure<IdentityOptions>(
                 opt =>
@@ -67,21 +70,41 @@ namespace WebTaskReports
                 });
             #endregion
 
+            //services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IEmailService, EmailService>();
+
             #region Куки (не активно и не настроено)
             // https://docs.microsoft.com/ru-ru/ASPNET/Core/fundamentals/app-state?view=aspnetcore-3.1
+
+            services.AddDistributedMemoryCache();
+
             //services.ConfigureApplicationCookie(opt =>
             //{
-            //    opt.Cookie.Name = "WebStore-Identity";
+            //    opt.Cookie.Name = "WebTaskReports";
             //    opt.Cookie.HttpOnly = true;
-            //    opt.Cookie.Expiration = TimeSpan.FromDays(150);
-
-            //    opt.LoginPath = "/Account/Login";
-            //    opt.LogoutPath = "/Account/Logout";
-            //    opt.AccessDeniedPath = "/Account/AccessDenided";
-
+            //    opt.Cookie.Expiration = TimeSpan.FromMinutes(5);//TimeSpan.FromDays(150); 
+            //    //opt.LoginPath = "/Account/Login";
+            //    //opt.LogoutPath = "/Account/Logout";
+            //    //opt.AccessDeniedPath = "/Account/AccessDenided";
             //    opt.SlidingExpiration = true;
             //});
-            //services.AddSession();
+
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.LoginPath = new PathString("/Identity/Account/Login");
+            });
+
+            services.ConfigureExternalCookie(opt =>
+            {
+                opt.LoginPath = new PathString("/Identity/Account/Login");                
+            });
+
+            services.AddSession(opt =>
+            {
+                opt.Cookie.Name = "WebTaskReports.Sessions";
+                opt.IdleTimeout = TimeSpan.FromMinutes(1);
+                opt.Cookie.IsEssential = true;                
+            });
             #endregion
 
             #region Внешняя авторизация через Google
@@ -89,13 +112,15 @@ namespace WebTaskReports
                 .AddOpenIdConnect("Google", "Google",
                     o =>
                     {
-                        IConfigurationSection googleAuthNSection =
-                            Configuration.GetSection("Authentication:Google");
-                        o.ClientId = "1045950316770-rm034ka9i6cs25fiursdhomnfg6kcinl.apps.googleusercontent.com";
-                        o.ClientSecret = "htNHxae7ewLoTH9-SwpPgpfs";
+                        //IConfigurationSection googleAuthNSection =
+                        //    Configuration.GetSection("Authentication:Google");
+                        o.ClientId = Configuration["Authentication:Google:ClientId"];
+                        o.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
                         o.Authority = "https://accounts.google.com";
                         o.ResponseType = OpenIdConnectResponseType.Code;
                         o.CallbackPath = "/signin-google";
+                        //o.RemoteSignOutPath = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://localhost:5001/";
+                        
                     });
             // .AddIdentityServerJwt();
 
@@ -143,9 +168,9 @@ namespace WebTaskReports
 
             app.UseStaticFiles();
 
-            // для куки
+            // для куки            
             //app.UseCookiePolicy();
-            //app.UseSession();
+            app.UseSession();
 
             app.UseRouting();
 

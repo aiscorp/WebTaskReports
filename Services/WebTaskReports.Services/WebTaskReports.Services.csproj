@@ -12,7 +12,10 @@
 
   <ItemGroup>
     <Folder Include="Database\" />
-    <Folder Include="Product\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.5.1" />
   </ItemGroup>
 
 </Project>
